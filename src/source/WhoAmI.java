@@ -20,7 +20,7 @@ public class WhoAmI extends JFrame
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		URL vid = this.getClass().getResource("/media/hackVratsaBeginning.wmv");
+		URL vid = this.getClass().getResource("/media/beginningHackVratsa.3gp");
 		MediaPanel test = new MediaPanel(vid);
 	}
 }
