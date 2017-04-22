@@ -32,16 +32,10 @@ public class WelcomeScreen extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public WelcomeScreen() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		createframe();
 	}
@@ -58,15 +52,10 @@ public class WelcomeScreen extends JFrame {
 		button = new JButton("FIND OUT NOW WHO AM I");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//frame.setContentPane(new JLabel());
-				FirstScreen firstScreen = new FirstScreen();
-				frame.add(firstScreen);
-				//firstScreen.setVisible(true);
 				ScreenPanel scrPan = new ScreenPanel();
 				frame.setContentPane(scrPan);
-				scrPan.setLocation(250, 250);
+				scrPan.setLocation(0, 0);
 				scrPan.setVisible(true);
-				
 			}
 		});
 		button.setForeground(Color.RED);
@@ -74,7 +63,6 @@ public class WelcomeScreen extends JFrame {
 		button.setBounds((frame.getWidth()-700)/2, frame.getHeight()-30*3, 700, 30);
 		button.setOpaque(false);
 		frame.getContentPane().add(button);
-		
 	}
 
 	private void changeBackground() {
