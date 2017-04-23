@@ -55,7 +55,7 @@ public class WelcomeScreen extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//test testNew = new test();
-				new TestVideoPlayer();
+				new IntroVideo();
 				addPanel(scrPan);
 			}
 

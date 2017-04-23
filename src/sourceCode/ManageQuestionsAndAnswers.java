@@ -20,6 +20,17 @@ public class ManageQuestionsAndAnswers {
 
 	public void checkAnswer(int answer) {
 		strAnswer = Integer.toString(answer);
+		switch (question) {
+		case 2:
+			new HallRoom();
+			break;
+		case 5:
+			new RoomWithPainting();
+			break;
+
+		default:
+			break;
+		}
 		if(strAnswer.equals(qAA.getQuestionsAndAnswers(question, 4))){
 			question+=1;
 			WelcomeScreen.scrPan.changeQAA(question);
