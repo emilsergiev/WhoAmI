@@ -16,6 +16,10 @@ import java.awt.Color;
 
 public class ScreenPanel extends JPanel {
 
+	private static final int BTN_WIDTH = 500;
+	private static final int BTN_HEIGHT = 50;
+	private static final int LEFT_ALIGNMENT = 150;
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
@@ -26,6 +30,10 @@ public class ScreenPanel extends JPanel {
 	private QuestionsAndAnswer qAA = new QuestionsAndAnswer();
 	private ManageQuestionsAndAnswers mQAA = new ManageQuestionsAndAnswers();
 	private BufferedImage img;
+	JLabel questionLabel = new JLabel();
+	JButton firstAnswerBtn = new JButton();
+	JButton secondAnswerBtn = new JButton();
+	JButton thirdAnswerBtn = new JButton();
 
 	public ScreenPanel() {
 		setLayout(null);
@@ -37,49 +45,52 @@ public class ScreenPanel extends JPanel {
 	public void questionsAttributes(int question) {
 		addButtons(question);
 		addQuestionLabel(question);
-		repaint();
-		System.out.println(question);
-		
+		changeQAA(question);
+	}
+
+	public void changeQAA(int question) {
+		firstAnswerBtn.setText("");
+		firstAnswerBtn.setText(qAA.getQuestionsAndAnswers(question, 1));
+		secondAnswerBtn.setText("");
+		secondAnswerBtn.setText(qAA.getQuestionsAndAnswers(question, 2));
+		thirdAnswerBtn.setText("");
+		thirdAnswerBtn.setText(qAA.getQuestionsAndAnswers(question, 3));
+		questionLabel.setText("");
+		questionLabel.setText(qAA.getQuestionsAndAnswers(question, 0));
 	}
 
 	private void addQuestionLabel(int question) {
-		JLabel questionLabel = new JLabel();
 		questionLabel.setForeground(Color.WHITE);
-		questionLabel.setBounds(10, 25, 645, 79);
-		questionLabel.setText(qAA.getQuestionsAndAnswers(question, 0));
+		questionLabel.setBounds(LEFT_ALIGNMENT, 100, BTN_WIDTH, BTN_HEIGHT);
 		add(questionLabel);
-
 	}
 
 	private void addButtons(int question) {
-		JButton firstAnswerBtn = new JButton();
 		firstAnswerBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				mQAA.checkAnswer(1);
 			}
 		});
-		firstAnswerBtn.setBounds(85, 142, 570, 52);
-		firstAnswerBtn.setText(qAA.getQuestionsAndAnswers(question, 1));
+		firstAnswerBtn.setBounds(LEFT_ALIGNMENT, 200, BTN_WIDTH, BTN_HEIGHT);
+
 		add(firstAnswerBtn);
 
-		JButton secondAnswerBtn = new JButton();
 		secondAnswerBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mQAA.checkAnswer(2);
 			}
 		});
-		secondAnswerBtn.setBounds(85, 205, 571, 44);
-		secondAnswerBtn.setText(qAA.getQuestionsAndAnswers(question, 2));
+		secondAnswerBtn.setBounds(LEFT_ALIGNMENT, 300, BTN_WIDTH, BTN_HEIGHT);
+
 		add(secondAnswerBtn);
 
-		JButton thirdAnswerBtn = new JButton("thirdAnswer");
 		thirdAnswerBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mQAA.checkAnswer(3);
 			}
 		});
-		thirdAnswerBtn.setText(qAA.getQuestionsAndAnswers(question, 3));
-		thirdAnswerBtn.setBounds(85, 260, 570, 52);
+
+		thirdAnswerBtn.setBounds(LEFT_ALIGNMENT, 400, BTN_WIDTH, BTN_HEIGHT);
 		add(thirdAnswerBtn);
 
 	}
