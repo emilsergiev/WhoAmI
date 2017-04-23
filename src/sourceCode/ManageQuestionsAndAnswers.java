@@ -5,6 +5,7 @@ public class ManageQuestionsAndAnswers {
 	private int question = 0;
 	private int returnedAnswer;
 	String strAnswer;
+	public boolean wrongAnswer = false;
 
 	public int getReturnedAnswer() {
 		return returnedAnswer;
@@ -20,24 +21,57 @@ public class ManageQuestionsAndAnswers {
 
 	public void checkAnswer(int answer) {
 		strAnswer = Integer.toString(answer);
+		if (strAnswer.equals(qAA.getQuestionsAndAnswers(question, 4))) {
+			question += 1;
+			WelcomeScreen.scrPan.changeQAA(question);
+			ScreenPanel.wrongAnswer.setText("");
+			System.out.println("OK" + " // " + question);
+			wrongAnswer=false;
+		} else {
+			ScreenPanel.wrongAnswer.setText("Wrong answer!");
+			wrongAnswer = true;
+		}
 		switch (question) {
-		case 2:
-			new HallRoom();
+		case 3:
+			if (!wrongAnswer) {
+				new HallRoom();
+				ScreenPanel.setImageBackground();
+				WelcomeScreen.scrPan.repaint();
+			}
 			break;
-		case 5:
-			new RoomWithPainting();
+		case 6:
+			if (!wrongAnswer) {
+				new RoomWithPainting();
+				ScreenPanel.setImageBackground();
+				WelcomeScreen.scrPan.repaint();
+			}
+			break;
+		case 9:
+			if (!wrongAnswer) {
+				new Toilet();
+				ScreenPanel.setImageBackground();
+				WelcomeScreen.scrPan.repaint();
+			}
+			break;
+		case 12:
+			if (!wrongAnswer) {
+				new ComputerRoom();
+				ScreenPanel.setImageBackground();
+				WelcomeScreen.scrPan.repaint();
+			}
+			break;
+		case 14:
+			if (!wrongAnswer) {
+				new ComputerRoom();
+				ScreenPanel.setImageBackground();
+				WelcomeScreen.scrPan.repaint();
+			}
 			break;
 
 		default:
 			break;
 		}
-		if(strAnswer.equals(qAA.getQuestionsAndAnswers(question, 4))){
-			question+=1;
-			WelcomeScreen.scrPan.changeQAA(question);
-			System.out.println("OK"+" // "+question);
-		} else {
-			System.out.println("wrong");
-		}
+
 	}
 
 }

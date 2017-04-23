@@ -55,7 +55,7 @@ public class IntroVideo extends JFrame {
 	 */
 	private Scene initScene() {
 
-		final File f = new File("C:/Users/N/workspace/WhoAmI/src/media/openingEyesHackVratsa.mp4");
+		final File f = new File("C:/Users/N/workspace/WhoAmI/src/media/01.Beginning.mp4");
 		Group root = new Group();
 		Media video = new Media(f.toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(video);

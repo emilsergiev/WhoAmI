@@ -54,7 +54,6 @@ public class WelcomeScreen extends JFrame {
 		button.setBorder(new LineBorder(Color.orange));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//test testNew = new test();
 				new IntroVideo();
 				addPanel(scrPan);
 			}

@@ -9,11 +9,13 @@ public class QuestionsAndAnswer {
 		questionsAndAnswers[0][2] = "Because I usually wear glasses";
 		questionsAndAnswers[0][3] = "Because I am drunk";
 		questionsAndAnswers[0][4] = "2";
+		
 		questionsAndAnswers[1][0] = "How many are the tulips?";
 		questionsAndAnswers[1][1] = "9";
 		questionsAndAnswers[1][2] = "8";
 		questionsAndAnswers[1][3] = "6";
 		questionsAndAnswers[1][4] = "1";
+		
 		questionsAndAnswers[2][0] = "Where is the cat?";
 		questionsAndAnswers[2][1] = "Chasing the doves";
 		questionsAndAnswers[2][2] = "Near the car";
@@ -57,7 +59,7 @@ public class QuestionsAndAnswer {
 		questionsAndAnswers[8][4] = "1";
 		
 		questionsAndAnswers[9][0] = "Why was is slippery?";
-		questionsAndAnswers[9][1] = "banana pill";
+		questionsAndAnswers[9][1] = "banana peel";
 		questionsAndAnswers[9][2] = "soap bar on the floor";
 		questionsAndAnswers[9][3] = "water spill on the floor";
 		questionsAndAnswers[9][4] = "3";
