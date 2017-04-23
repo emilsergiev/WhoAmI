@@ -60,11 +60,9 @@ public class ManageQuestionsAndAnswers {
 				WelcomeScreen.scrPan.repaint();
 			}
 			break;
-		case 14:
+		case 15:
 			if (!wrongAnswer) {
-				new ComputerRoom();
-				ScreenPanel.setImageBackground();
-				WelcomeScreen.scrPan.repaint();
+				new Outro();
 			}
 			break;
 

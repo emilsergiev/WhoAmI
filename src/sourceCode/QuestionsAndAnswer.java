@@ -1,7 +1,7 @@
 package sourceCode;
 
 public class QuestionsAndAnswer {
-	private String[][] questionsAndAnswers = new String[15][5];
+	private String[][] questionsAndAnswers = new String[16][5];
 
 	public QuestionsAndAnswer() {
 		questionsAndAnswers[0][0] = "Why do I see blurry??";
