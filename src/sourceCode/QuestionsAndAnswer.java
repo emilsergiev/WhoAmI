@@ -19,6 +19,11 @@ public class QuestionsAndAnswer {
 		questionsAndAnswers[2][2] = "Near the car";
 		questionsAndAnswers[2][3] = "In front of the door";
 		questionsAndAnswers[2][4] = "3";
+		questionsAndAnswers[3][0] = "What is this room?";
+		questionsAndAnswers[3][1] = "Chasing the doves";
+		questionsAndAnswers[3][2] = "Near the car";
+		questionsAndAnswers[3][3] = "In front of the door";
+		questionsAndAnswers[3][4] = "3";
 	}
 
 	public String getQuestionsAndAnswers(int x, int y) {

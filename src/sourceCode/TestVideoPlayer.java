@@ -1,10 +1,11 @@
 package sourceCode;
 
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.SceneBuilder;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -15,60 +16,75 @@ import javax.swing.JFrame;
 
 public class TestVideoPlayer extends JFrame {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
-    final JFXPanel jfxPanel;
-    /**
-     * Create a new Frame, set title, ...
-     */
-    public TestVideoPlayer() {
+	final JFXPanel jfxPanel;
+	ManageQuestionsAndAnswers mQAA = new ManageQuestionsAndAnswers();
 
-        this.setTitle("Swing and JavaFX");
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setSize(1024, 768);
+	/**
+	 * Create a new Frame, set title, ...
+	 */
+	public TestVideoPlayer() {
 
-        // create a JFXPanel
-        jfxPanel = new JFXPanel();
+		this.setTitle("Clue video");
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setSize(800, 600);
 
-        // add the jfxPanel to the contentPane of the JFrame
-        this.getContentPane().add(jfxPanel);
-        this.setVisible(true);
+		// create a JFXPanel
+		jfxPanel = new JFXPanel();
 
-        Platform.runLater(new Runnable() {
+		// add the jfxPanel to the contentPane of the JFrame
+		this.getContentPane().add(jfxPanel);
+		this.setVisible(true);
 
-            @Override
-            public void run() {
-                jfxPanel.setScene(initScene());
-            }
-        });
-    }
+		Platform.runLater(new Runnable() {
 
-//    public static final void main (String[] args) {
-//        new TestVideoPlayer();
-//    }
+			@Override
+			public void run() {
+				jfxPanel.setScene(initScene());
+			}
+		});
+	}
 
-    /**
-     * init the JFX Scene and 
-     * @return scene
-     */
-    private Scene initScene() {
+	// public static final void main (String[] args) {
+	// new TestVideoPlayer();
+	// }
 
-    	final File f = new File("C:/Users/N/workspace/WhoAmI/src/media/openingEyesHackVratsa.wmv");
-        Group root = new Group();
-        SceneBuilder<?> sb = SceneBuilder.create().width(640).height(400).root(root);
-        Media video = new Media(f.toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(video);
-        mediaPlayer.setAutoPlay(true);
-        mediaPlayer.play();
+	/**
+	 * init the JFX Scene and
+	 * 
+	 * @return scene
+	 */
+	private Scene initScene() {
+		File f = null;
+		switch (mQAA.getQuestion()) {
+		case 0:
+			f = new File("C:/Users/N/Desktop/hackaton/00_04-challenge.mp4");
+			break;
+		case 3:
+			f = new File("C:/Users/N/Desktop/hackaton/test.mp4");
+			break;
 
-        MediaView view = new MediaView(mediaPlayer);
+		default:
+			break;
+		}
 
-        root.getChildren().add(view);
-        Scene scene = sb.build();
+		Group root = new Group();
+		Media video = new Media(f.toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(video);
+		mediaPlayer.setAutoPlay(true);
+		mediaPlayer.play();
 
-        return scene;
+		MediaView view = new MediaView(mediaPlayer);
 
-    }
+		final DoubleProperty width = view.fitWidthProperty();
+		final DoubleProperty height = view.fitHeightProperty();
+
+		width.bind(Bindings.selectDouble(view.sceneProperty(), "width"));
+		height.bind(Bindings.selectDouble(view.sceneProperty(), "height"));
+
+		root.getChildren().add(view);
+		Scene scene = new Scene(root, width.get(), height.getValue());
+
+		return scene;
+
+	}
 }
